@@ -131,6 +131,11 @@
   letter-spacing: 0.5px;
   white-space: nowrap;
   font-weight: 600;
+   text-decoration: none;
+
+}
+.label Link{
+  text-decoration: none;
 }
 
 .badge {

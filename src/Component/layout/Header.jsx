@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import '../style/Header.css';
 import logo from '../../assets/logo.jpg'; 
 import { Boxes } from 'lucide-react';
@@ -6,7 +6,19 @@ import { useContext } from "react";
 import ThemeContext from "../../store/ThemeContext";
 
 const Header = () => {
+
   const {cart} = useContext(ThemeContext);
+  const loginUser = JSON.parse(localStorage.getItem('loginUser') || "null");
+  const navigate = useNavigate();
+  
+  const logout = ()=>{
+    localStorage.removeItem("loginUser");
+    navigate("/LoginSignUp");
+  }
+
+
+
+
   return (
     <>
       <header className="header">
@@ -45,7 +57,7 @@ const Header = () => {
             </div>
             <div className="icon-item">
               <span className="icon">👤</span>
-              <span className="label"><Link to="/LoginSignUp">Account</Link></span>
+              <span className="label">{!loginUser ? (<Link to="/LoginSignUp">Account</Link>):(<a onClick={logout}>Logout</a>)}</span>
             </div>
           </div>
         </div>

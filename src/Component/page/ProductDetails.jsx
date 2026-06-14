@@ -55,7 +55,7 @@ const ProductDetails = () => {
             </div>
         </div>
         
-            <hr /> <br />
+            <br /><hr /> <br />
             <h1 className="similar">Similar Products</h1>
             <br /><hr />
         

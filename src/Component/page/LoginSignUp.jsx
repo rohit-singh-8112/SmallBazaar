@@ -1,8 +1,12 @@
 import { useState, useRef } from 'react'
 import { Eye, EyeOff} from 'lucide-react';
-import axios from 'axios';
+// import axios from 'axios';
 
 import '../style/Login&SignUp.css';
+import {signUpHandar, loginHandar} from '../../store/LoginData'
+import { useNavigate } from 'react-router-dom';
+
+
 const LoginSignUp = () => {
   
   const [showPassword, setShowPassword] = useState(false);
@@ -11,6 +15,7 @@ const LoginSignUp = () => {
   const userNumber = useRef();
   const userMail= useRef();
   const userPassword= useRef();
+  const navigate = useNavigate();
 
 
   const handleSubmitSignUp = async (e) => {
@@ -26,14 +31,8 @@ const LoginSignUp = () => {
     if(nameVal==""||numberVal==""||mailVal==""||passwordVal==""){
       alert("enter filed");
     }else{
-    const payload = {firstName: nameVal, phone: numberVal, email: mailVal, password: passwordVal}
-    try {
-      const responce = await axios.post('https://dummyjson.com/users/add', payload);
-      alert("success:", responce.data);
+      signUpHandar(nameVal, numberVal, mailVal, passwordVal);
     }
-    catch(err) {
-      console.log("submition failed:",err);
-    }}
    
     };
 
@@ -43,21 +42,11 @@ const LoginSignUp = () => {
       const passwordVal = userPassword.current.value;
       userName.current.value = "";
       userPassword.current.value = "";
-      if(nameVal==""||passwordVal==""){
-        alert("enter Fileds");
-      }else{
-      const payload = {username: nameVal, password: passwordVal}
-      try{
-        const responce = await axios.post('https://dummyjson.com/auth/login',payload);
-        const token = responce.data.accessToken;
-        localStorage.setItem('authToken', token);
-      }
-      catch (err){
-        console.err('Login failed:', err.response?.data || err.message)
-      }}
+      
+      loginHandar(nameVal, passwordVal,navigate);
     };
 
-
+    
  
   return (
     <>

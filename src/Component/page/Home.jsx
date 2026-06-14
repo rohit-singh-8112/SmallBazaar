@@ -1,46 +1,23 @@
 // import { Link } from "react-router-dom"
 import Header from "../layout/Header"
 import ProductCard from "../Product/ProductCard"
-import axios from 'axios';
-import { useEffect, useState } from "react";
+
+import { useState, useContext } from "react";
 import Footer from "../layout/Footer";
+import ThemeContext from "../../store/ThemeContext";
 
 const Home = () => {
-
-    const [data, setData] = useState([]);
-    const [loding, setloding] = useState(true);
+    const {products, loding} = useContext(ThemeContext);
     const [currentPage, setCurrentPage] = useState(1);
 
- 
-
-useEffect(()=>{
-    const controller = new AbortController();
-    const fetchData = async() =>{
-        try{
-            setloding(true);
-            const responce =await axios.get('https://dummyjson.com/products',{
-                signal:controller.signal
-            })
-            setData(responce.data.products)
-
-        }
-        catch(error){
-                console.log(error.massage);
-        }
-        finally{
-            setloding(false);
-        }
-    };
-    fetchData();
-},[]);
 
     const productsPerPage = 8;
 
     const lastIndex = currentPage * productsPerPage;
     const firstIndex = lastIndex - productsPerPage;
-    const currentProducts = data.slice(firstIndex, lastIndex);
+    const currentProducts = products.slice(firstIndex, lastIndex);
 
-    const totalPages = Math.ceil(data.length / productsPerPage);
+    const totalPages = Math.ceil(products.length / productsPerPage);
 
     const pageButton = [];
     for(let i=0; i<totalPages; i++){
@@ -66,7 +43,7 @@ useEffect(()=>{
                 <button onClick={()=>setCurrentPage(currentPage-1)} disabled={currentPage === 1} >Prev</button>
                 {pageButton}
                 
-                <button onClick={()=>setCurrentPage(currentPage+1)} disabled={currentPage === totalPages} >Next</button>
+                <button onClick={()=>setCurrentPage(currentPage+1)} disabled={currentPage === totalPages } >Next</button>
             </div>
         </>
     )}

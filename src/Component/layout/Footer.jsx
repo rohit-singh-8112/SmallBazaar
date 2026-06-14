@@ -29,13 +29,13 @@ const Footer = () => {
         </div>
         <div className="footer-section">
           <h3>Contact</h3>
-          <p>Email: support@smallbazaar.com</p>
-          <p>Phone: +1-800-BAZAAR</p>
-          <p>Address: 123 Market St, Commerce City</p>
+          <p>Email: chauhanrc7878@gmail.com</p>
+          <p>Phone: +91 8112467938</p>
+          <p>Address: 740,Shree Ram Niwash, katkari pada rabale navi mumbai (400708)</p>
         </div>
       </div>
       <div className="footer-bottom">
-        <p>&copy; 2024 Small Bazaar. All rights reserved.</p>
+        <p>&copy; 2026 Small Bazaar. All rights reserved.</p>
         <div className="social-links">
           <a href="#">Facebook</a>
           <a href="#">Twitter</a>

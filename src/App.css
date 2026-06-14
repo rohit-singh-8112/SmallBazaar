@@ -90,6 +90,13 @@
 }
 .moreDetails{
   background-color: rgb(200, 53, 9);
+  text-decoration: none ;
+  display: inline-block;
+  color: white;
+  
+}
+.moreDetails a{
+  text-decoration: none;
   color: white;
 }
 .moreDetails:hover{
@@ -99,12 +106,16 @@
 .addToCart{
   background-color: #318cdc;
   color: white;
+  
+}
+.addToCart:active{
+  background-color: #2ecc71;
 }
 .addToCart:hover{
   background-color: #2a6da8;
   transform: translateY(-2px);
+  
 }
-
 .pagination {
   display: flex;
   justify-content: center;
@@ -127,4 +138,49 @@
 .pagination button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.moreProductsContainer{
+  display: flex;
+  /* justify-content: ; */
+  align-items: center;
+ 
+}
+.detailsImage{
+  width: 50%;
+  /* height: 80%; */
+ 
+  object-fit: cover;
+
+
+}
+.moreDetailsContainer{
+  width: 50%;
+}
+.moreDetailsContainer h1{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  margin:0px;
+}
+.moreDetailsContainer h2{
+  font-size: 20px;
+  font-weight: 700;
+  color: #2ecc71;
+  margin: 0px;
+ 
+}
+.moreDetailsContainer h3{
+  font-size: 15px;
+  /* font-weight: 400; */
+  color: #22212178;
+}
+.moreDetailsContainer h4{
+  color: #2ecc71;
+}
+.similar{
+  text-align: center;
 }

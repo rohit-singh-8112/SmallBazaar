@@ -2,11 +2,11 @@ import { Link } from "react-router-dom"
 import '../style/Header.css';
 import logo from '../../assets/logo.jpg'; 
 import { Boxes } from 'lucide-react';
+import { useContext } from "react";
+import ThemeContext from "../../store/ThemeContext";
 
 const Header = () => {
-
-  let currentCart = JSON.parse(localStorage.getItem('cartId'));
-  let bag = currentCart.length;
+  const {cart} = useContext(ThemeContext);
   return (
     <>
       <header className="header">
@@ -40,7 +40,7 @@ const Header = () => {
             </div>
             <div className="icon-item">
               <span className="icon">🛒</span>
-              <span className="badge">{bag >=1 ? bag : 0}</span>
+              <span className="badge" >{cart.length}</span>
               <span className="label">Cart</span>
             </div>
             <div className="icon-item">

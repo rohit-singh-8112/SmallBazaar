@@ -1,14 +1,14 @@
 
-
-
+import { useContext } from "react";
+import ThemeContext from "../../store/ThemeContext";
+import { Link } from "react-router-dom";
 
 const ProductCard = ({image, rating, brand, product,price, id}) => {
-  
+  const {addCartHandler} = useContext(ThemeContext)
   const addToCart=()=>{
-    let currentCart = JSON.parse(localStorage.getItem('cartId')) || [];
-    currentCart.push({id});
-  localStorage.setItem('cartId',JSON.stringify(currentCart));
+    addCartHandler(id);
   };
+    
   return (
     <>
       <div className="container" >
@@ -25,8 +25,8 @@ const ProductCard = ({image, rating, brand, product,price, id}) => {
           </div>
         </div>
         <div className="buttonContainer" >
-          <button className="moreDetails" onClick={"#"} >More Details</button>
-          <button className="addToCart" onClick={addToCart} >Add to Cart</button>
+        <button className="moreDetails"  > <Link to={`/ProductDetails/${id}`}>More Details</Link> </button>
+        <button className="addToCart" onClick={addToCart} >Add to Cart</button>
         </div>
       </div>
     

@@ -1,14 +1,16 @@
 
 import "./App.css";
-// import ProductCard from "./Component/Product/ProductCard";
-// import { data } from './Component/data';
 import AppRoutes from './Component/Router/AppRoutes'
+import { ThemeProvider } from "./store/ThemeContext";
 function App() {
   
 
   return (
-  <AppRoutes />
 
+    
+    <ThemeProvider>
+      <AppRoutes />
+    </ThemeProvider>
  
   );
 }

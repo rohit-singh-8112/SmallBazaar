@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSquareFacebook, faSquareTwitter, faSquareInstagram, faSquareGithub   } from "@fortawesome/free-brands-svg-icons";
+
 
 import '../style/Footer.css';
 
@@ -37,9 +40,10 @@ const Footer = () => {
       <div className="footer-bottom">
         <p>&copy; 2026 Small Bazaar. All rights reserved.</p>
         <div className="social-links">
-          <a href="#">Facebook</a>
-          <a href="#">Twitter</a>
-          <a href="#">Instagram</a>
+          <a href="https://facebook.com" target="_blank"> <FontAwesomeIcon icon={faSquareFacebook} /> </a>
+          <a href="https://twitter.com" target="_blank"> <FontAwesomeIcon icon={faSquareTwitter} /> </a>
+          <a href="https://instagram.com" target="_blank"> <FontAwesomeIcon icon={faSquareInstagram} /> </a>
+          <a href="https://github.com" target="_blank"> <FontAwesomeIcon icon={faSquareGithub} /> </a>
         </div>
       </div>
     </footer>

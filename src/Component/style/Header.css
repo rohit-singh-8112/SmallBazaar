@@ -124,6 +124,11 @@
   color: black;
   border-radius: 8px;
  
+
+}
+.icon-item a{
+  text-decoration: none;
+  color: white;
 }
 
 .label {

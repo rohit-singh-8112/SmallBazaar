@@ -12,9 +12,14 @@ const Header = () => {
   const navigate = useNavigate();
   
   const logout = ()=>{
-    localStorage.removeItem("loginUser");
-    navigate("/LoginSignUp");
-  }
+    if(loginUser){
+      const result = confirm('Are you sure to logout');
+      if(result){
+        localStorage.removeItem("loginUser");
+        navigate("/");
+      }
+    }
+  };
 
 
 
@@ -51,9 +56,11 @@ const Header = () => {
               </span>
             </div>
             <div className="icon-item">
-              <span className="icon">🛒</span>
-              <span className="badge" >{cart.length}</span>
-              <span className="label">Cart</span>
+              <Link to="/Cart" >
+                <span className="icon">🛒</span>
+                <span className="badge" >{cart.length}</span>
+                <span className="label">Cart</span>
+              </Link>
             </div>
             <div className="icon-item">
               <span className="icon">👤</span>

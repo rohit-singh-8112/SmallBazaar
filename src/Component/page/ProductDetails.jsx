@@ -4,14 +4,15 @@ import Footer from "../layout/Footer";
 import { useContext } from "react";
 import ThemeContext from "../../store/ThemeContext";
 import ProductCard from "../Product/ProductCard";
+import { useNavigate } from "react-router-dom";
 
 
 
 const ProductDetails = () => {
     const {id} = useParams();
-    const { products, addCartHandler } = useContext(ThemeContext);
-
-    const details = products.find(item => String(item.id) === String(id));
+    const { allProducts, addCartHandler, loginUser } = useContext(ThemeContext);
+    const navigate = useNavigate();
+    const details = allProducts.find(item => String(item.id) === String(id));
 
     if (!details) {
         return (
@@ -26,11 +27,27 @@ const ProductDetails = () => {
     addCartHandler(id);
   };
 
-  const similarProducts = products.filter( 
+  const similarProducts = allProducts.filter( 
     item =>
         item.category === details?.category &&
         item.id !== details?.id
   );
+    const buyNowHandler =()=>{
+        if (!loginUser){
+            const result = confirm("Please login first. Do you want to login?");
+            if(result){
+            navigate("/LoginSignUp");
+            }
+        }else{
+            const result = prompt("Enter your Address");
+            if(result){
+                alert("Your oredr Successfully Placed");
+            }
+        }
+    }
+
+  
+
 
   return (
     <>
@@ -50,7 +67,7 @@ const ProductDetails = () => {
                 
                 <div className="buttonContainer" >
                     <button className="addToCart" onClick={addToCart} >Add to Cart</button>
-                    <button className="moreDetails" >Buy now</button>
+                    <button className="moreDetails" onClick={buyNowHandler} >Buy now</button>
                 </div>
             </div>
         </div>

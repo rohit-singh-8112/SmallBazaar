@@ -25,7 +25,7 @@ const ProductCard = ({image, rating, brand, product,price, id}) => {
           </div>
         </div>
         <div className="buttonContainer" >
-        <button className="moreDetails"  > <Link to={`/ProductDetails/${id}`}>More Details</Link> </button>
+        <Link to={`/ProductDetails/${id}`}><button className="moreDetails"  > More Details </button></Link>
         <button className="addToCart" onClick={addToCart} >Add to Cart</button>
         </div>
       </div>

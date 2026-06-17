@@ -7,17 +7,24 @@ import Footer from "../layout/Footer";
 import ThemeContext from "../../store/ThemeContext";
 
 const Home = () => {
-    const {products, loding} = useContext(ThemeContext);
+    const {products, loding, category, allProducts} = useContext(ThemeContext);
     const [currentPage, setCurrentPage] = useState(1);
-
-
+    let categoryFilteredProducts ;
+    {category === "" ? (
+        categoryFilteredProducts = products 
+    ):(
+        categoryFilteredProducts = allProducts.filter((product)=>
+        category === "" ? true : product.category === category 
+        )
+    )}
+     
     const productsPerPage = 8;
 
     const lastIndex = currentPage * productsPerPage;
     const firstIndex = lastIndex - productsPerPage;
-    const currentProducts = products.slice(firstIndex, lastIndex);
+    const currentProducts = categoryFilteredProducts.slice(firstIndex, lastIndex);
 
-    const totalPages = Math.ceil(products.length / productsPerPage);
+    const totalPages = Math.ceil(categoryFilteredProducts.length / productsPerPage);
 
     const pageButton = [];
     for(let i=0; i<totalPages; i++){

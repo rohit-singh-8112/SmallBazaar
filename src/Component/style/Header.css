@@ -146,6 +146,9 @@ body{
   text-decoration: none;
   color: white;
 }
+.iconCart{
+  display:none;
+}
 
 .label {
   font-size: 0.75rem;
@@ -212,8 +215,12 @@ body{
     font-size: 1.2rem;
   }
 }
+@media(max-width:526){
 
-@media (max-width: 498px) {
+
+}
+
+@media (max-width: 513px) {
   .header-container {
     padding: 0 10px;
   }
@@ -229,7 +236,10 @@ body{
     height: 40px;
   }
 
-  .brand-name {
+  /* .brand-name {
+    display: none;
+  } */
+  .brand-name{
     display: none;
   }
 
@@ -249,7 +259,15 @@ body{
   .icon-item {
     min-width: 40px;
   }
-
+  .iconCart{
+    display: block;
+  }
+  .icon{
+    display: none;
+  }
+  .labelCart{
+    display: none;
+  }
 
 }
 

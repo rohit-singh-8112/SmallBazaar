@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom"
 import '../style/Header.css';
 import logo from '../../assets/logo.jpg'; 
-// import { Boxes } from 'lucide-react';
+import { Boxes } from 'lucide-react';
 import { useContext, useRef } from "react";
 import ThemeContext from "../../store/ThemeContext";
 // import axios from "axios";
@@ -75,7 +75,7 @@ const Header = () => {
           </div>
           <div className="header-icons">
             <div className="icon-item">
-              
+              <span className="icon"><Boxes/></span>
               <span className="label">
                 <select className="select"
                   onChange={(e)=> setCategory(e.target.value)}
@@ -90,14 +90,15 @@ const Header = () => {
             </div>
             <div className="icon-item">
               <Link to="/Cart" >
-                
-                <span className="badge" >{cart.length}</span>
                 <span className="icon">🛒</span>
+                <span className="badge" >{cart.length}</span>
+                <span className="iconCart">🛒</span>
+                <span className="label labelCart">Cart</span>
               </Link>
             </div>
             <div className="icon-item">
               <Link to="/LoginSignUp">
-                
+                <span className="icon">👤</span>
                 <span className="label">{!loginUser ? "Account " :(<span onClick={logout}>Logout</span>)}</span>
               </Link>
             </div>

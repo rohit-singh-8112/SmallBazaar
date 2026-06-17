@@ -55,7 +55,8 @@ const CartHeader = () => {
               <Link to="/Cart" >
                 <span className="icon">🛒</span>
                 <span className="badge" >{cart.length}</span>
-                <span className="label">Cart</span>
+                <span className="iconCart">🛒</span>
+                <span className="label labelCart">Cart</span>
               </Link>
             </div>
             <div className="icon-item">

@@ -59,8 +59,10 @@ const CartHeader = () => {
               </Link>
             </div>
             <div className="icon-item">
-              <span className="icon">👤</span>
-              <span className="label">{!loginUser ? (<Link to="/LoginSignUp">Account</Link>):(<a onClick={logout}>Logout</a>)}</span>
+              <Link to="/LoginSignUp">
+                <span className="icon">👤</span>
+                <span className="label">{!loginUser ? "Account" :(<span onClick={logout}>Logout</span>)}</span>
+              </Link>
             </div>
           </div>
         </div>

@@ -1,3 +1,15 @@
+*{
+  margin: 0;
+  padding: 0;
+ 
+}
+
+html,
+body{
+  width: 100%;
+  overflow-x: hidden;
+}
+
 .header {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
@@ -14,7 +26,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 10px;
   padding: 0 20px;
 }
 
@@ -23,7 +35,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  min-width: 250px;
+  max-width: 250px;
   text-decoration: none;
   color: white;
 }
@@ -42,7 +54,7 @@
 }
 
 .brand-name {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   font-weight: bold;
   margin: 0;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
@@ -53,13 +65,13 @@
 .search-bar {
   flex: 1;
   display: flex;
-  gap: 8px;
-  max-width: 400px;
+  gap: 4px;
+  max-width: 350px;
 }
 
 .search-input {
   flex: 1;
-  padding: 12px 15px;
+  padding: 6px 7px;
   border: none;
   border-radius: 25px;
   font-size: 1rem;
@@ -72,7 +84,7 @@
 }
 
 .search-btn {
-  padding: 12px 25px;
+  padding: 10px 20px;
   background-color: #ff6b35;
   color: white;
   border: none;
@@ -96,7 +108,7 @@
 /* Header Icons */
 .header-icons {
   display: flex;
-  gap: 25px;
+  gap: 20px;
   align-items: center;
 }
 
@@ -107,7 +119,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
-  min-width: 50px;
+  min-width: 0px;
 }
 
 .icon {
@@ -222,7 +234,7 @@
   }
 
   .search-bar {
-    flex-direction: column;
+    flex-direction: row;
   }
 
   .search-btn {
@@ -238,9 +250,7 @@
     min-width: 40px;
   }
 
-  .label {
-    display: none;
-  }
+
 }
 
 

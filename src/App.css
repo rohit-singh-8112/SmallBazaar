@@ -398,6 +398,9 @@
   border: 2px solid grey;
   transform: scale(1.03);
 }
+.Account{
+  margin-left: 12px;
+}
 
 
  @media (max-width: 768px) { 

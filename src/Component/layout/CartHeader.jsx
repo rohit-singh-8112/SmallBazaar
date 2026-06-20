@@ -61,7 +61,7 @@ const CartHeader = () => {
             </div>
             <div className="icon-item">
               <Link to="/LoginSignUp">
-                <span className="icon">👤</span>
+                <span className="icon Account">{!loginUser ? "👤" :(<span onClick={logout}>👤</span>)}</span>
                 <span className="label">{!loginUser ? "Account" :(<span onClick={logout}>Logout</span>)}</span>
               </Link>
             </div>

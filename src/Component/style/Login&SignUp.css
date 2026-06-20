@@ -95,12 +95,13 @@
   margin-top: 15px;
 }
 
-.signup-link spen {
+.signup-link span {
   text-decoration: none;
   color: #007bff;
+  cursor: pointer;
   font-weight: bold;
 }
-.signup-link:hover spen{
+.signup-link:hover span{
     color: #0056b3;
 }
 

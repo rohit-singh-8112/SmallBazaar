@@ -14,22 +14,56 @@ export const ThemeProvider = ({children}) => {
     const navigate = useNavigate();
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [category, setCategory] = useState("");
+    const [showPopup, setShowPopup] = useState(false);
+    const [qtyItem, setQtyItem] = useState(()=> JSON.parse(localStorage.getItem('qtyItem')) || []);
+    // const [itemQuentity, setItemQuentity] = useState((1));
 
 
     useEffect(()=>{
        localStorage.setItem('cartId',JSON.stringify(cart));
     },[cart]);
+
+    useEffect(() => {
+      localStorage.setItem("qtyItem", JSON.stringify(qtyItem));
+    }, [qtyItem]);
    
-    const addCartHandler=(id)=>{
+    const addCartHandler = (id, itemQitemQuentity) => {
        if(!loginUser){
         const result = confirm("Please login first. Do you want to login?");
         if(result){
           navigate("/LoginSignUp");
         }
-       }else{
+       }else if(!cart.includes(id)){
           setCart((cart) =>[...cart, id]);
-       } 
+          setShowPopup(true);
+          clearTimeout();
+          setTimeout(()=>{
+            setShowPopup(false)
+          },200)
+       }
+      setQtyItem((itemPrev)=>{
+        const existItem = itemPrev.find((item) => String(item.id) === String(id));
+        if(existItem){
+
+          setShowPopup(true);
+          clearTimeout();
+          setTimeout(()=>{
+            setShowPopup(false)
+          },200)
+
+          return itemPrev.map((item)=>
+            String(item.id) === String(id) 
+            ?{...item, qty:item.qty + itemQitemQuentity}: item
+          );
+          
+        }else{
+          return[...itemPrev, {id, qty: itemQitemQuentity}];
+        }
+        
+      })
     }
+
+  
 
 
     const removeCartHandler=(id)=>{
@@ -41,9 +75,11 @@ export const ThemeProvider = ({children}) => {
        }else{
           const remainingItems = cart.filter(cartid=> cartid !== id);
           setCart(remainingItems);
-       } 
+          setQtyItem((itemPrevious)=>
+            itemPrevious.filter(item=> String(item.id) !== String(id)))
+      } 
     }
-    
+
     useEffect(()=>{
         const controller = new AbortController();
         const fetchData = async()=>{
@@ -85,7 +121,7 @@ export const ThemeProvider = ({children}) => {
 
     
   return (
-    <ThemeContext.Provider value={{addCartHandler, cart, products, loding, removeCartHandler, loginUser, setCart, filteredProducts, setFilteredProducts, allProducts, category, setCategory}}>
+    <ThemeContext.Provider value={{addCartHandler, cart, products, loding, removeCartHandler, loginUser, setCart, filteredProducts, setFilteredProducts, allProducts, category, setCategory, showPopup, qtyItem, setQtyItem}}>
         {children}
     </ThemeContext.Provider>
   )

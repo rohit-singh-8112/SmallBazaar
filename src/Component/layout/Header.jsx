@@ -8,7 +8,7 @@ import ThemeContext from "../../store/ThemeContext";
 
 const Header = () => {
 
-  const {cart, setCategory, allProducts, setFilteredProducts} = useContext(ThemeContext);
+  const {cart, setCategory, allProducts, setFilteredProducts, showPopup} = useContext(ThemeContext);
   const loginUser = JSON.parse(localStorage.getItem('loginUser') || "null");
   const navigate = useNavigate();
   const inputValue = useRef();
@@ -59,6 +59,7 @@ const Header = () => {
     <>
       <header className="header">
         <div className="header-container">
+          {showPopup && (<div className="cart-popup">✅ Product Added To Cart</div>)}
           <div className="logo-section">
             <img src={logo} alt="Small Bazaar Logo" className="logo" />
             <h1 className="brand-name">Small Bazaar</h1>

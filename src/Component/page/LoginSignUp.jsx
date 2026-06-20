@@ -12,6 +12,7 @@ const LoginSignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
   const userName= useRef();
+  const Name = useRef();
   const userNumber = useRef();
   const userMail= useRef();
   const userPassword= useRef();
@@ -21,6 +22,7 @@ const LoginSignUp = () => {
   const handleSubmitSignUp = async (e) => {
     e.preventDefault();
     const nameVal = userName.current.value;
+    const yourName = Name.current.value;
     const numberVal = userNumber.current.value;
     const mailVal = userMail.current.value;
     const passwordVal = userPassword.current.value;
@@ -28,10 +30,11 @@ const LoginSignUp = () => {
     userNumber.current.value = "";
     userMail.current.value = "";
     userPassword.current.value = "";
-    if(nameVal==""||numberVal==""||mailVal==""||passwordVal==""){
+    Name.current.value = "";
+    if(nameVal==""||numberVal==""||mailVal==""||passwordVal==""||yourName===""){
       alert("enter filed");
     }else{
-      signUpHandar(nameVal, numberVal, mailVal, passwordVal);
+      signUpHandar(nameVal, yourName, numberVal, mailVal, passwordVal,setIsLogin);
     }
    
     };
@@ -42,7 +45,6 @@ const LoginSignUp = () => {
       const passwordVal = userPassword.current.value;
       userName.current.value = "";
       userPassword.current.value = "";
-      
       loginHandar(nameVal, passwordVal,navigate);
     };
 
@@ -69,7 +71,7 @@ const LoginSignUp = () => {
                 </div>
                 <button type="submit" className="login-btn"> Login </button>
                 <p className="signup-link">
-                  Don't have an account? <spen onClick={()=>setIsLogin(false)}>Sign Up</spen>
+                  Don't have an account? <span onClick={()=>setIsLogin(false)}>Sign Up</span>
                 </p>
               </form>    
             </div>
@@ -80,6 +82,10 @@ const LoginSignUp = () => {
                 <div className="input-group">
                   <label>UserName</label>
                   <input ref={userName} type="text" placeholder="Enter UserName"/>
+                </div>
+                <div className="input-group">
+                  <label>Name</label>
+                  <input ref={Name} type="text" placeholder="Enter Your Name"/>
                 </div>
                 <div className="input-group">
                   <label>Number</label>
@@ -98,7 +104,7 @@ const LoginSignUp = () => {
                 </div>
                 <button type="submit" className="login-btn"> Sign Up </button>
                 <p className="signup-link">
-                  Don't have an account? <spen onClick={()=>setIsLogin(true)}>Login</spen>
+                  Don't have an account? <span onClick={()=>setIsLogin(true)}>Login</span>
                 </p>
               </form>
             </div>

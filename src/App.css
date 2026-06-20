@@ -242,6 +242,27 @@
 
   
 }
+.quentityContainer{
+  width: 90px ;
+  display: flex;
+  flex-wrap: wrap;
+  border: groove;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.quentityContainer button{
+  width: 25px;
+  border-radius: 5px;
+  padding: 2px;
+  background-color: #b97023;
+  cursor: pointer;
+  border: none;
+}
+.quentityContainer p{
+  width: 40px;
+  text-align: center;
+}
 
 .cartContainer{
   max-width: 95%;
@@ -262,6 +283,7 @@
 } */
  .cart-title{
   text-align: center;
+  text-transform: capitalize;
  }
 
 .cartDetails{

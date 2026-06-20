@@ -1,12 +1,13 @@
 
-import { useContext } from "react";
+import { useContext} from "react";
 import ThemeContext from "../../store/ThemeContext";
 import { Link } from "react-router-dom";
 
 const ProductCard = ({image, rating, brand, product,price, id}) => {
   const {addCartHandler} = useContext(ThemeContext)
+  const itemQuentity = 1; 
   const addToCart=()=>{
-    addCartHandler(id);
+    addCartHandler(id, itemQuentity );
   };
     
   return (

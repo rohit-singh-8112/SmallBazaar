@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom"
 
 
 const Cart = () => {
-    const {cart, loginUser, setCart, allProducts, loding} = useContext(ThemeContext);
+    const {cart, loginUser, setCart, allProducts, loding, qtyItem} = useContext(ThemeContext);
     // const [cartData, setCartData] = useState([]);
     // const [loding, setLoding] = useState(true);
     const navigate = useNavigate();
@@ -39,7 +39,9 @@ const Cart = () => {
         allProducts.find(item=>String(item.id) === String(id) )
     )
     .filter(Boolean);
-    const itemsPrice = cartItem.reduce((total, item) => total + item.price, 0);
+
+
+    const itemsPrice = cartItem.reduce((total, item) => total + (item.price * (qtyItem.find((newitem) => String(newitem.id) === String(item.id))?.qty || 1)), 0);
   
     const deliveryFee = cart.length != 0 ? (itemsPrice <= 399 ? 99 : 0 ) : (0) ;
     const totalAmount = itemsPrice + deliveryFee;
@@ -73,7 +75,7 @@ const Cart = () => {
     <>
         <CartHeader />
         <br />
-        <h1 className="cart-title">Hello</h1>
+        <h1 className="cart-title">Hii {loginUser.YourName}</h1>
         <h3 className="cart-title">Your Total Items is {cart.length}.</h3>
         <br /><hr />
         {!loding ? (

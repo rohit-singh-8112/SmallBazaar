@@ -21,11 +21,12 @@ const ProductDetails = () => {
                 <div>loading ...</div>
                 <Footer />
             </>
-        );
-    }
+        )
+    };
+    const itemQuentity = 1; 
     const addToCart=()=>{
-    addCartHandler(id);
-  };
+        addCartHandler(details.id, itemQuentity);
+    };
 
   const similarProducts = allProducts.filter( 
     item =>
